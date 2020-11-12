@@ -1,3 +1,5 @@
+#compare casting magic missels at level 2 to scorching ray (level 2 spell)
+
 castatlevel = 2
 hitmodifier = 4
 
