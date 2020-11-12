@@ -1,4 +1,5 @@
 #compare casting magic missels at level 2 to scorching ray (level 2 spell)
+setwd("/Users/jannawilloughby/GDrive/loot/comparespells/")
 
 castatlevel = 2
 hitmodifier = 4
@@ -23,7 +24,7 @@ for(t in targetAC){
     hit.sray = tohit[tohit>=t]
     sray = NULL
     for(hts in hit.sray){
-      sray  = c(sray, sum(sample(seq(1, 6, 1), 2, replace = T)))
+      sray = c(sray, sum(sample(seq(1, 6, 1), 1, replace = T)))
     }
     OUT = rbind(OUT, c(t, r, sum(magicm), sum(hit.sray)))
   }
@@ -32,6 +33,7 @@ data = as.data.frame(OUT)
 colnames(data) = c("AC", "rep", "missle", "ray")
 
 #What is the average damage for magic missle and scorching ray at various foe AC?
+pdf("misselvsrays.pdf", width=5, height=5)
 plot(-100,-100, xlim=c(10,20), ylim=c(0,70), xlab="foe's AC", ylab="damage dealt")
 
 #estimate means/SE
@@ -57,4 +59,4 @@ points(means$AC, means$srayM, pch=20, col="firebrick3", cex=2)
 lines(means$AC, means$srayM, lty=1, col="firebrick3", cex=2)
 lines(means$AC, means$srayU, lty=2, col="firebrick3", cex=2)
 lines(means$AC, means$srayL, lty=2, col="firebrick3", cex=2)
-
+dev.off
