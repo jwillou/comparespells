@@ -1,14 +1,12 @@
-#compare casting magic missels at level 2 to scorching ray (level 2 spell)
+#compare fireball damage to lightening bolt damage 
 setwd("/Users/jannawilloughby/GDrive/loot/comparespells/")
 
-castatlevel = 2
-hitmodifier = 4
 
 OUT = NULL
-targetAC = seq(10,20,1)
-for(t in targetAC){
-  for(r in 1:100){
-    #magic missles - 3d4+1, plus extra for levels
+dexmodifier = seq(1,5,1)
+for(d in targetAC){
+  for(r in 1:1000){
+    #fireball - 8d6, beat dex save take half damage
     magicm = sum(sample(seq(1,4,1),(3 + (castatlevel - 1)), replace=T)) + (3 + (castatlevel - 1))
     
     #scorching ray - 3 rays @ 2d6 damage, must beat AC to hit
